@@ -75,7 +75,7 @@ pub(crate) fn optimal_folding_strategy(
 ///
 /// # Returns
 /// * `num_elements` - The estimated proof size in terms of field elements
-fn estimate_proof_size(
+pub(crate) fn estimate_proof_size(
     degree: usize,
     blowup_factor: usize,
     num_queries: usize,
