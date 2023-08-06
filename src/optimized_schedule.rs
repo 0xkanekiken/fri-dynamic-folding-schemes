@@ -10,8 +10,9 @@ const FE_IN_EACH_ELEMENTS: usize = 2;
 /// * `blowup_factor` - The blowup factor used in the FRI protocol
 /// * `num_queries` - The number of queries used in the FRI protocol
 /// * `current_folding_seq` - The current folding sequence. This is used to recursively explore different
-/// folding strategies. The default value is an empty vector. The folding factors are represented as
-/// in the form of bits. For example, a folding factor of 4 is represented as 2.
+/// folding strategies. The default value is an vector with a single element, 0(`bits`)), which corresponds to
+/// no folding. We include first FRI layer into the FRI proof without any folding. The folding factors
+/// are represented as in the form of bits. For example, a folding factor of 4 is represented as 2.
 ///
 /// # Returns
 /// * `optimal_proof` - The estimated proof size in terms of field elements
