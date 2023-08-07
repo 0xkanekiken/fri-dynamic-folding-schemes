@@ -21,6 +21,9 @@ const FE_IN_EACH_ELEMENTS: usize = 2;
 /// # Panics
 /// * If the degree is not a power of 2
 /// * If the blowup factor is not a power of 2
+///
+/// TODO: This function can be optimized further by memoizing the results. This is left as a future
+/// optimization.
 pub(crate) fn optimal_folding_strategy(
     degree: usize,
     blowup_factor: usize,
