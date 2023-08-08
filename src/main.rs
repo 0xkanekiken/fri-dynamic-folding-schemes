@@ -2,14 +2,15 @@ mod optimized_schedule;
 mod simple_schedule;
 
 fn main() {
-    let (degree, blowup_factor, num_queries, remainder_max_degree) = (1 << 25, 8, 1, 256);
+    let (degree, blowup_factor, num_queries, remainder_max_degree) = (1 << 25, 8, 27, 64);
 
     let (opt_size, opt_schedule) =
         optimized_schedule::optimal_folding_strategy(degree, blowup_factor, num_queries, vec![0]);
 
     println!(
-        "The optimal size {} and optimal folding schedule {:?}",
-        opt_size, opt_schedule
+        "The optimal size {} kBs and optimal folding schedule {:?}",
+        optimized_schedule::size_in_bytes(opt_size) / 1024,
+        opt_schedule
     );
 
     for i in 1..=4 {
@@ -22,9 +23,9 @@ fn main() {
         );
 
         println!(
-            "Folding factor {} size {} and folding sequence {:?}",
+            "Folding factor {} size {} kBs and folding sequence {:?}",
             1 << i,
-            size,
+            optimized_schedule::size_in_bytes(size) / 1024,
             schedule
         );
     }

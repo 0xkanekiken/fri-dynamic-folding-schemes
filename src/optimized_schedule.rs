@@ -1,5 +1,6 @@
 const ELEMENTS_IN_HASH_OUTPUT: usize = 4;
 const FE_IN_EACH_ELEMENTS: usize = 2;
+const ELEMENT_SIZE: usize = 8; // in bytes
 
 /// Computes the optimal folding strategy for a FRI proof. The function uses a heuristic to estimate
 /// the proof size in terms of field elements. It then iteratively explores different folding strategies
@@ -117,4 +118,9 @@ pub(crate) fn estimate_proof_size(
     // number of elements in the remainder polynomial.
     num_elements += remainder_poly_degree * FE_IN_EACH_ELEMENTS;
     num_elements
+}
+
+/// Computes the size of the FRI proof in bytes for a given folding strategy.
+pub(crate) fn size_in_bytes(num_elements: usize) -> usize {
+    num_elements * ELEMENT_SIZE
 }
